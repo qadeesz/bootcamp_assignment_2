@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -26,22 +26,22 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h3>Updated by Qadees Javed</h3>
-          <p>
+    
           { this.state.users.map(user => 
                 
-                <div className="card">
+                <div key={user.id} className="card">
                   <img src={user.avatar_url} alt="Avatar" />
                   <div className="container">
                     <h4><b>{user.name}</b></h4> 
                     <p>{user.bio}</p> 
                     <p className="App-link">
-                      <a href={user.html_url} target="_blank">Github Link</a> 
+                      <a href={user.html_url} >Github Link</a> 
                     </p>
                   </div>
                 </div>
                
           )}
-          </p>
+        
           <a
             className="App-link"
             href="https://reactjs.org"
