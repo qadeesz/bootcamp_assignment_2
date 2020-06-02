@@ -22,12 +22,12 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - uses: actions/setup-node@v1
+    - uses: borales/actions-yarn@v2.0.0
       with:
         cmd: install
         
     - name: Build React App
-      run: npm build
+      run: yarn build
       
     # Install Surge
     - name: Install Surge
