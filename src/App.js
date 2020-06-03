@@ -52,8 +52,8 @@ class App extends React.Component {
         <main>
           <section className="posts">
             <h2>Redit React JS Posts</h2>
-            {this.state.posts.map(post => {
-              return <li key={post.id}><a href={post.url} >{post.title}</a></li>;
+            {this.state.posts.map((post, key) => {
+              return <li key={post.id}><a href={post.url} > { key + 1 } - {post.title}</a></li>;
             })}
           </section>
         </main>
