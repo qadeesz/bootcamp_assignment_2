@@ -6,7 +6,8 @@ import './App.css';
 class App extends React.Component {
 
   state = {
-    users: []
+    users: [],
+    posts: []
   }
 
   componentDidMount() {
@@ -17,6 +18,12 @@ class App extends React.Component {
         this.setState({ users: users });
         console.log(this.state.users)
       })
+
+
+      axios.get(`https://www.reddit.com/r/reactjs.json`).then(res => {
+        const posts = res.data.data.children.map(obj => obj.data);
+        this.setState({ posts });
+      });
 
   }
 
@@ -41,16 +48,15 @@ class App extends React.Component {
                 </div>
                
           )}
-        
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
+        <main>
+          <section className="posts">
+            <h2>Redit React JS Posts</h2>
+            {this.state.posts.map(post => {
+              return <li key={post.id}><a href={post.url} >{post.title}</a></li>;
+            })}
+          </section>
+        </main>
       </div>
     )
   }
